@@ -1,0 +1,8 @@
+[package]
+name = "database"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+scan_fmt = "0.2"
+memoffset = "0.9"
