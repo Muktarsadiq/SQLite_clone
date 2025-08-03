@@ -307,7 +307,7 @@ fn set_internal_node_key(node: &mut [u8], index: usize, key: u32) {
 
 struct Pager {
     file_descriptor: File,
-    file_length: u64,  // Changed from usize to u64
+    file_length: u64,  
     num_pages: usize,
     pages: [Option<Box<[u8; PAGE_SIZE]>>; TABLE_MAX_PAGES],
 }
@@ -445,7 +445,7 @@ fn internal_node_insert(table: &mut Table, parent_page_num: usize, child_page_nu
 
 
 fn leaf_node_find(table: &mut Table, page_num: usize, key: u32) -> Cursor {
-    // Scope the node fetch so the borrow ends
+    
     let num_cells;
     {
         let node = get_page(&mut table.pager, page_num)
@@ -453,7 +453,7 @@ fn leaf_node_find(table: &mut Table, page_num: usize, key: u32) -> Cursor {
         num_cells = leaf_node_num_cells(node);
     }
 
-    // Now it's safe to use table again
+    
     let mut cursor = Cursor {
         table,
         page_num,
@@ -561,7 +561,6 @@ fn leaf_node_split_and_insert(cursor: &mut Cursor, key: u32, value: &Row) {
     let old_page_num = cursor.page_num;
     let new_page_num = get_unused_page_num(&mut cursor.table.pager);
     
-    // We need to handle this carefully due to borrowing rules
     // First, get the old next leaf value
     let old_next_leaf = {
         let old_node = get_page(&mut cursor.table.pager, old_page_num)
@@ -627,7 +626,7 @@ fn leaf_node_split_and_insert(cursor: &mut Cursor, key: u32, value: &Row) {
             }
         }
         
-        // If we're inserting at the end
+        // we're inserting at the end
         if cursor.cell_num >= leaf_node_num_cells(old_node) as usize {
             let mut new_cell = vec![0u8; LEAF_NODE_CELL_SIZE];
             new_cell[0..4].copy_from_slice(&key.to_le_bytes());
@@ -685,8 +684,6 @@ fn leaf_node_split_and_insert(cursor: &mut Cursor, key: u32, value: &Row) {
                 .expect("Failed to get old node after split");
             node_parent(old_node) as usize
         };
-
-        // 3. Assign the same parent to the new node (already done above)
 
         // 4. Get max key of old_node again (it may have changed)
         let new_max = get_node_max_key(&mut cursor.table.pager, old_page_num);
