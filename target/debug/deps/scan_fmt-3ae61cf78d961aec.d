@@ -1,6 +1,0 @@
-/Users/user/Desktop/lets_c/database/target/debug/deps/scan_fmt-3ae61cf78d961aec.d: /Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/lib.rs /Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/parse.rs
-
-/Users/user/Desktop/lets_c/database/target/debug/deps/libscan_fmt-3ae61cf78d961aec.rmeta: /Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/lib.rs /Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/parse.rs
-
-/Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/lib.rs:
-/Users/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scan_fmt-0.2.6/src/parse.rs:
